@@ -1,0 +1,19 @@
+.logout {
+  display: flex;
+  gap: 26px;
+}
+
+@media screen and (max-width: 450px) {
+  .logout {
+    position: absolute;
+    width: 100%;
+    top: -500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: top 0.5s ease-in-out;
+  }
+  
+}
