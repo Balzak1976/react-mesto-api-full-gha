@@ -13,7 +13,7 @@ export const checkToken = (token) => {
 // ============================ FUNCTION =======================================
 
 function request(url, { token, ...options }) {
-  return fetch(`https://auth.nomoreparties.co/${url}`, {
+  return fetch(`http://localhost:3000/${url}`, {
     method: token ? 'GET' : 'POST',
     headers: {
       Accept: 'application/json',

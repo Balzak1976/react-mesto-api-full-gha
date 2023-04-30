@@ -1,16 +1,6 @@
-const apiSettings = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-57',
-  headers: {
-    authorization: '4f5c1ea4-b5a2-4f77-88d2-569b5dbe0c66',
-    'Content-Type': 'application/json',
-  },
-};
-
 class Api {
   constructor(params) {
     this._baseUrl = params.baseUrl;
-    this._headers = params.headers;
-    this._params = params;
   }
 
   createQueueFetch() {
@@ -61,10 +51,15 @@ class Api {
   }
 
   _createFetch(url, typeMethod, dataBody) {
+    const token = localStorage.getItem('jwt');
+
     return fetch(url, {
       method: typeMethod,
-      headers: this._headers,
-      body: dataBody ? JSON.stringify(dataBody) : dataBody,
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: dataBody ? JSON.stringify(dataBody) : null,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -75,4 +70,4 @@ class Api {
   }
 }
 
-export const api = new Api(apiSettings);
+export const api = new Api({baseUrl: 'http://localhost:3000'});

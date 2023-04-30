@@ -74,10 +74,10 @@ function App() {
         setBtnSubmitSaving(false);
       });
   };
-
+ 
   const handleTokenCheck = (jwt) => {
     auth.checkToken(jwt)
-      .then(({ data }) => {
+      .then((data) => {
         if (data) {
           setEmail({ email: data.email });
           setLoggedIn(true);
@@ -220,7 +220,7 @@ function App() {
     <div className="root-app">
       <div className="page">
         <CurrentUserContext.Provider value={currentUser}>
-          
+
           <Header
             loggedIn={loggedIn}
             userData={email}
@@ -271,55 +271,55 @@ function App() {
               />
             </Routes>
           </div>
-          
+
           <Footer />
-          
-            <EditAvatarPopup
-              config={popupConfig.avatar}
-              isOpen={isEditAvatarPopupOpen}
-              onClose={closeAllPopups}
-              onUpdateAvatar={handleUpdateAvatar}
-              buttonSubmitState={isBtnSubmitSaving}
-            />
 
-            <EditProfilePopup
-              config={popupConfig.profile}
-              isOpen={isEditProfilePopupOpen}
-              onClose={closeAllPopups}
-              onUpdateUser={handleUpdateUser}
-              buttonSubmitState={isBtnSubmitSaving}
-            />
+          <EditAvatarPopup
+            config={popupConfig.avatar}
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}
+            buttonSubmitState={isBtnSubmitSaving}
+          />
 
-            <AddPlacePopup
-              config={popupConfig.card}
-              isOpen={isAddPlacePopupOpen}
-              onClose={closeAllPopups}
-              onAddPlace={handleAddPlaceSubmit}
-              buttonSubmitState={isBtnSubmitSaving}
-            />
+          <EditProfilePopup
+            config={popupConfig.profile}
+            isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+            buttonSubmitState={isBtnSubmitSaving}
+          />
 
-            <DeleteCardPopup
-              config={popupConfig.delCard}
-              isOpen={isDelCardPopupOpen}
-              onClose={closeAllPopups}
-              onCardDelete={handleCardDelete}
-              buttonSubmitState={isBtnSubmitSaving}
-            />
+          <AddPlacePopup
+            config={popupConfig.card}
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
+            onAddPlace={handleAddPlaceSubmit}
+            buttonSubmitState={isBtnSubmitSaving}
+          />
 
-            <ImagePopup
-              config={popupConfig.image}
-              card={selectedCard}
-              isOpen={isImagePopupOpen}
-              onClose={closeAllPopups}
-            />
+          <DeleteCardPopup
+            config={popupConfig.delCard}
+            isOpen={isDelCardPopupOpen}
+            onClose={closeAllPopups}
+            onCardDelete={handleCardDelete}
+            buttonSubmitState={isBtnSubmitSaving}
+          />
 
-            <InfoTooltip
-              config={infoConfig}
-              info={infoToolTip}
-              isOpen={isInfoToolTipOpen}
-              onClose={closeAllPopups}
-            />
-          
+          <ImagePopup
+            config={popupConfig.image}
+            card={selectedCard}
+            isOpen={isImagePopupOpen}
+            onClose={closeAllPopups}
+          />
+
+          <InfoTooltip
+            config={infoConfig}
+            info={infoToolTip}
+            isOpen={isInfoToolTipOpen}
+            onClose={closeAllPopups}
+          />
+
         </CurrentUserContext.Provider>
       </div>
     </div>
