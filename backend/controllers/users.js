@@ -69,9 +69,9 @@ const login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const JWT = createToken({ _id: user.id });
+      const token = createToken({ _id: user.id });
 
-      return res.status(OK).send({ JWT });
+      return res.status(OK).send({ token });
     })
     .catch(next);
 };
