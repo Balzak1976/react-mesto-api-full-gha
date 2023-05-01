@@ -3,7 +3,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const { JsonWebTokenError } = jwt;
 
-const { SECRET_KEY = 'some-secret-key' } = process.env;
+const { verifyToken } = require('../utils/jwt');
 
 const extractBearerToken = (header) => header.replace('Bearer ', '');
 
@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, SECRET_KEY);
+    payload = verifyToken(token);
   } catch (err) {
     // console.log(err);
     if (err instanceof JsonWebTokenError) {
