@@ -9,8 +9,12 @@ const cardsRoutes = require('./cards');
 const { userLoginValidate, userCreateValidate } = require('../middlewares/userValidate');
 const auth = require('../middlewares/auth');
 const { handleNotFoundUrl, handleErrors } = require('../middlewares/errors');
+// отключить логгер
+// const { requestLogger, errorLogger } = require('../middlewares/logger');
 
 // ==========================================================================
+
+// routes.use(requestLogger);
 
 // registration route
 routes.post('/signup', express.json(), userCreateValidate, createUser);
@@ -23,9 +27,11 @@ routes.use('/users', userRoutes);
 routes.use('/cards', cardsRoutes);
 routes.use(handleNotFoundUrl);
 
+// routes.use(errorLogger);
+
 // handler celebrate validator
 routes.use(errors());
-// handler commune errors
+// handler common errors
 routes.use(handleErrors);
 
 module.exports = routes;

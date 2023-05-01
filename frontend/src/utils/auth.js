@@ -18,7 +18,7 @@ function request(url, { token, ...options }) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: token ? `Bearer ${token}` : null,
+      Authorization: `Bearer ${token}`,
     },
     body: !token ? JSON.stringify(options) : null,
   }).then((res) => {
