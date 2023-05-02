@@ -1,3 +1,5 @@
+import { BASE_URL } from '../utils/settings';
+
 export const register = (email, password) => {
   return request('signup', { email, password });
 };
@@ -13,7 +15,7 @@ export const checkToken = (token) => {
 // ============================ FUNCTION =======================================
 
 function request(url, { token, ...options }) {
-  return fetch(`http://localhost:3000/${url}`, {
+  return fetch(BASE_URL + url, {
     method: token ? 'GET' : 'POST',
     headers: {
       Accept: 'application/json',

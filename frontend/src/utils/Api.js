@@ -1,3 +1,5 @@
+import { BASE_URL } from '../utils/settings';
+
 class Api {
   constructor(params) {
     this._baseUrl = params.baseUrl;
@@ -8,43 +10,43 @@ class Api {
   }
 
   getUserInfo() {
-    const url = `${this._baseUrl}/users/me`;
+    const url = `${this._baseUrl}users/me`;
 
     return this._createFetch(url, 'GET');
   }
 
   setUserAvatar(dataAvatar) {
-    const url = `${this._baseUrl}/users/me/avatar`;
+    const url = `${this._baseUrl}users/me/avatar`;
 
     return this._createFetch(url, 'PATCH', dataAvatar);
   }
 
   setUserInfo(dataUser) {
-    const url = `${this._baseUrl}/users/me`;
+    const url = `${this._baseUrl}users/me`;
 
     return this._createFetch(url, 'PATCH', dataUser);
   }
 
   getInitialCards() {
-    const url = `${this._baseUrl}/cards`;
+    const url = `${this._baseUrl}cards`;
 
     return this._createFetch(url, 'GET');
   }
 
   addPlace(dataCards) {
-    const url = `${this._baseUrl}/cards`;
+    const url = `${this._baseUrl}cards`;
 
     return this._createFetch(url, 'POST', dataCards);
   }
 
   deleteCard(dataCardId) {
-    const url = `${this._baseUrl}/cards/${dataCardId}`;
+    const url = `${this._baseUrl}cards/${dataCardId}`;
 
     return this._createFetch(url, 'DELETE');
   }
 
   changeLikeCardStatus(cardId, isLiked) {
-    const url = `${this._baseUrl}/cards/${cardId}/likes`;
+    const url = `${this._baseUrl}cards/${cardId}/likes`;
     const typeMethod = isLiked ? 'DELETE' : 'PUT';
 
     return this._createFetch(url, typeMethod);
@@ -70,4 +72,4 @@ class Api {
   }
 }
 
-export const api = new Api({baseUrl: 'http://localhost:3000'});
+export const api = new Api({baseUrl: BASE_URL});
