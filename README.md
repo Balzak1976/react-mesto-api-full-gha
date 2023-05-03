@@ -6,9 +6,11 @@
 
 Адрес репозитория: https://github.com/Balzak1976/react-mesto-api-full-gha
 
+доступ к серверу: ssh mesto@185.154.192.74
+
 ## Ссылки на проект
 
-IP-адрес 185.154.192.74
+IP 185.154.192.74
 
 Frontend https://skormaksim.nomoredomains.monster
 

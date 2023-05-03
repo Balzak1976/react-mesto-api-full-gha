@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/Balzak1976/express-mesto-gha/issues"
   },
-  "homepage": "https://github.com/Balzak1976/express-mesto-gha#readme",
+  "homepage": "./",
   "dependencies": {
     "bcrypt": "5.1.0",
     "celebrate": "15.0.1",
