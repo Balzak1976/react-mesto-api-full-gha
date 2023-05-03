@@ -9,6 +9,7 @@ const cardNotFoundMsg = 'Передан несуществующий _id кар�
 const getCards = (req, res, next) => {
   Card.find({})
     .populate(['owner', 'likes'])
+    .sort({ createdAt: -1 })
     .then((cards) => res.send(cards))
     .catch(next);
 };
@@ -18,7 +19,9 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ owner, name, link })
-    .then((card) => res.status(CREATED).send(card))
+    .then((card) => {
+      card.populate(['owner']).then(() => res.status(CREATED).send(card));
+    })
     .catch(next);
 };
 
