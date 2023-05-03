@@ -62,7 +62,7 @@ const userUpdateValidate = celebrate({
 });
 
 const userIdValidate = celebrate({
-  params: Joi.object().keys({ userId: Joi.string().alphanum().length(24) }),
+  params: Joi.object().keys({ userId: Joi.string().required().alphanum().length(24) }),
 });
 
 module.exports = {

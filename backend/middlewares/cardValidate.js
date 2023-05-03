@@ -19,7 +19,7 @@ const cardValidate = celebrate({
 });
 
 const cardIdValidate = celebrate({
-  params: Joi.object().keys({ cardId: Joi.string().alphanum().length(24) }),
+  params: Joi.object().keys({ cardId: Joi.string().required().alphanum().length(24) }),
 });
 
 module.exports = { cardValidate, cardIdValidate };
