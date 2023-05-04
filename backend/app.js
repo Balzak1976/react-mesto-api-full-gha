@@ -6,7 +6,7 @@ const cors = require('cors');
 const routes = require('./routes/index');
 
 const app = express();
-app.use(cors({ origin: ['https://skormaksim.nomoredomains.monster'] }));
+app.use(cors({ origin: ['https://skormaksim.nomoredomains.monster', 'http://localhost:3001'] }));
 
 const {
   PORT = 3000,
