@@ -10,7 +10,9 @@ const cardValidate = celebrate({
         'string.max': 'Название должно быть не длиннее 30 симв.',
         'string.empty': 'Поле "name" должно быть заполнено',
       }),
-    link: Joi.string().required().pattern(urlRegExp)
+    link: Joi.string()
+      .required()
+      .pattern(urlRegExp)
       .message('Введите URL места')
       .messages({
         'string.empty': 'Поле "link" должно быть заполнено',
@@ -19,7 +21,9 @@ const cardValidate = celebrate({
 });
 
 const cardIdValidate = celebrate({
-  params: Joi.object().keys({ cardId: Joi.string().required().alphanum().length(24) }),
+  params: Joi.object().keys({
+    cardId: Joi.string().required().hex().length(24),
+  }),
 });
 
 module.exports = { cardValidate, cardIdValidate };

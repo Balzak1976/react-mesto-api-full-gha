@@ -1,6 +1,10 @@
 const express = require('express');
 
-const { userUpdateValidate, userIdValidate } = require('../middlewares/userValidate');
+const {
+  userUpdateValidate,
+  userUpdateAvatarValidate,
+  userIdValidate,
+} = require('../middlewares/userValidate');
 
 const userRoutes = express.Router();
 
@@ -20,6 +24,6 @@ userRoutes.get('/:userId', userIdValidate, getUserById);
 
 userRoutes.patch('/me', express.json(), userUpdateValidate, updateUser);
 
-userRoutes.patch('/me/avatar', express.json(), userUpdateValidate, updateAvatar);
+userRoutes.patch('/me/avatar', express.json(), userUpdateAvatarValidate, updateAvatar);
 
 module.exports = userRoutes;
