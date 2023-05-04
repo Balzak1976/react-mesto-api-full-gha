@@ -19,9 +19,7 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ owner, name, link })
-    .then((card) => {
-      card.populate(['owner']).then(() => res.status(CREATED).send(card));
-    })
+    .then((card) => card.populate(['owner']).then(() => res.status(CREATED).send(card)))
     .catch(next);
 };
 
@@ -29,7 +27,7 @@ const delCard = (req, res, next) => {
   const { cardId } = req.params;
 
   Card.delJustOwnCard(cardId, req.user._id)
-    .then((card) => { res.status(OK).send(card); })
+    .then((card) => res.status(OK).send(card))
     .catch(next);
 };
 

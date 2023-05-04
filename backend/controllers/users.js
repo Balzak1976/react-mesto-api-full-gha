@@ -43,14 +43,14 @@ const createUser = (req, res, next) => {
     .then((user) => {
       const userNoPassword = user.toObject();
       delete userNoPassword.password;
-      res.status(CREATED).send(userNoPassword);
+
+      return res.status(CREATED).send(userNoPassword);
     })
     .catch((err) => {
       if (err.code === 11000) {
-        next(new ConflictError('Данный email уже зарегистрирован'));
-      } else {
-        next(err);
+        return next(new ConflictError('Данный email уже зарегистрирован'));
       }
+      return next(err);
     });
 };
 
