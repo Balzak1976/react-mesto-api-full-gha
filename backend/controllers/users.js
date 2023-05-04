@@ -26,7 +26,7 @@ const getUserById = (req, res, next) => {
   const { userId } = req.params;
 
   User.findById(userId)
-    .then((user) => { handleNotFoundError(user, res, userNotFoundMsg); })
+    .then((user) => handleNotFoundError(user, res, userNotFoundMsg))
     .catch(next);
 };
 
@@ -59,9 +59,7 @@ const updateUser = (req, res, next) => {
   const { name, about } = req.body;
 
   User.findByIdAndUpdate(id, { name, about }, { new: true, runValidators: true })
-    .then((user) => {
-      handleNotFoundError(user, res, userNotFoundMsg);
-    })
+    .then((user) => handleNotFoundError(user, res, userNotFoundMsg))
     .catch(next);
 };
 
@@ -70,9 +68,7 @@ const updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
 
   User.findByIdAndUpdate(id, { avatar }, { new: true, runValidators: true })
-    .then((user) => {
-      handleNotFoundError(user, res, userNotFoundMsg);
-    })
+    .then((user) => handleNotFoundError(user, res, userNotFoundMsg))
     .catch(next);
 };
 

@@ -40,12 +40,15 @@ const cardSchema = new Schema(
 cardSchema.statics.delJustOwnCard = function foo(cardId, userId) {
   return this.findById(cardId).then((card) => {
     if (!card) {
-      throw new NotFoundError('Карточка с указанным _id не найдена');
-    } else if (card.owner.toString() !== userId) {
-      throw new ForbiddenError('Нет доступа на удаление чужой карточки');
-    } else {
-      return card.deleteOne();
+      return Promise.reject(
+        new NotFoundError('Карточка с указанным _id не найдена'),
+      );
+    } if (card.owner.toString() !== userId) {
+      return Promise.reject(
+        new ForbiddenError('Нет доступа на удаление чужой карточки'),
+      );
     }
+    return card.deleteOne();
   });
 };
 

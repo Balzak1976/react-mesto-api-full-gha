@@ -39,9 +39,7 @@ const likeCard = (req, res, next) => {
 
   Card.findByIdAndUpdate(cardId, { $addToSet: { likes: _id } }, { new: true })
     .populate(['owner', 'likes'])
-    .then((card) => {
-      handleNotFoundError(card, res, cardNotFoundMsg);
-    })
+    .then((card) => handleNotFoundError(card, res, cardNotFoundMsg))
     .catch(next);
 };
 
@@ -51,9 +49,7 @@ const dislikeCard = (req, res, next) => {
 
   Card.findByIdAndUpdate(cardId, { $pull: { likes: _id } }, { new: true })
     .populate(['owner', 'likes'])
-    .then((card) => {
-      handleNotFoundError(card, res, cardNotFoundMsg);
-    })
+    .then((card) => handleNotFoundError(card, res, cardNotFoundMsg))
     .catch(next);
 };
 

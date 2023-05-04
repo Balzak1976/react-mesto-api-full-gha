@@ -5,10 +5,9 @@ const OK = http2.constants.HTTP_STATUS_OK;
 
 const handleNotFoundError = (data, res, message) => {
   if (!data) {
-    throw new NotFoundError(message);
-  } else {
-    res.status(OK).send(data);
+    return Promise.reject(new NotFoundError(message));
   }
+  return res.status(OK).send(data);
 };
 
 module.exports = { handleNotFoundError };
