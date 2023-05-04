@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    throw (new UnauthorizedError('Необходима авторизация'));
+    return next(new UnauthorizedError('Необходима авторизация'));
   }
 
   const token = extractBearerToken(authorization);
@@ -22,13 +22,12 @@ module.exports = (req, res, next) => {
   } catch (err) {
     // console.log(err);
     if (err instanceof JsonWebTokenError) {
-      next(new UnauthorizedError('Необходима авторизация'));
-    } else {
-      next(err);
+      return next(new UnauthorizedError('Необходима авторизация'));
     }
+    return next(err);
   }
   // req.user = { _id: '643941994ffb7ea7616ac7f8' };
   req.user = payload;
 
-  next();
+  return next();
 };
