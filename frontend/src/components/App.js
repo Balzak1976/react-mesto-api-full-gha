@@ -203,14 +203,7 @@ function App() {
     if (jwt) {
       handleTokenCheck(jwt);
 
-      api.createQueueFetch()
-        .then(([dataUser, dataCards]) => {
-          setCurrentUser(dataUser);
-          setCards(dataCards);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      
     }
   }, [loggedIn]);
 
