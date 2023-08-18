@@ -1,4 +1,4 @@
-# Проект react-mesto-api-full
+# Проект react-mesto-api-full-gha
 
 ## Описание и функциональность проекта
 
@@ -38,7 +38,9 @@
 git clone https://github.com/Balzak1976/react-mesto-api-full-gha.git
 ```
 
-установить зависимости
+### Frontend
+
+установить зависимости в папке `frontend`
 
 ```javascript
 npm ci
@@ -47,11 +49,33 @@ npm ci
 запуск проекта в режиме разработки ( адрес: `http://localhost:3000` )
 
 ```javascript
-npm run start
+npm run dev
 ```
 
 создать финальную сборку ( папка `build` )
 
 ```javascript
 npm run build
+```
+
+### Backend
+
+установить зависимости в папке `backend`
+
+```javascript
+npm ci
+```
+
+создать файл `.env` в корне проекта
+
+```javascript
+PORT = 3000;
+MONGO_URL = "mongodb://0.0.0.0:27017/mestodb";
+SECRET_KEY = "some-secret-key";
+```
+
+запустить
+
+```javascript
+npm run start
 ```
